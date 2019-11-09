@@ -14,7 +14,7 @@ def init():
 
     cfg.init('sonarr.apikey', '')
     cfg.init('sonarr.url', 'http://localhost:8989')
-    
+
     cfg.init('radarr.apikey', '')
     cfg.init('radarr.url', 'http://localhost:7878')
 
@@ -22,27 +22,34 @@ def init():
     cfg.init('bot.debug_console', True)
 
     # Trackers
+    cfg.init('pretome.nick', '')
+    cfg.init('pretome.nick_pass', '')
+    cfg.init('pretome.auth_key', '')
+    cfg.init('pretome.torrent_pass', '')
+    cfg.init('pretome.invite_key', '')
+    cfg.init('pretome.delay', 0)
+
     cfg.init('iptorrents.nick', '')
     cfg.init('iptorrents.nick_pass', '')
     cfg.init('iptorrents.auth_key', '')
     cfg.init('iptorrents.torrent_pass', '')
     cfg.init('iptorrents.invite_key', '')
     cfg.init('iptorrents.delay', 0)
-    
+
     cfg.init('torrentleech.nick', '')
     cfg.init('torrentleech.nick_pass', '')
     cfg.init('torrentleech.auth_key', '')
     cfg.init('torrentleech.torrent_pass', '')
     cfg.init('torrentleech.invite_key', '')
     cfg.init('torrentleech.delay', 0)
-    
+
     cfg.init('alpharatio.nick', '')
     cfg.init('alpharatio.nick_pass', '')
     cfg.init('alpharatio.auth_key', '')
     cfg.init('alpharatio.torrent_pass', '')
     cfg.init('alpharatio.invite_key', '')
     cfg.init('alpharatio.delay', 0)
-    
+
     cfg.init('revolutiontt.nick', '')
     cfg.init('revolutiontt.nick_pass', '')
     cfg.init('revolutiontt.auth_key', '')

@@ -27,6 +27,7 @@ def wanted(title, download_link, indexer):
     }
 
     resp = requests.post(url="{}/api/release/push".format(cfg['radarr.url']), headers=headers, params=params).json()
+    logger.debug(resp)
     if 'approved' in resp:
         approved = resp['approved']
 

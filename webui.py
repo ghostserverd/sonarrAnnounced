@@ -100,6 +100,13 @@ def index():
 @auth.login_required
 def trackers():
     if request.method == 'POST':
+        if 'pretome_torrentpass' in request.form:
+            cfg['pretome.torrent_pass'] = request.form['pretome_torrentpass']
+            cfg['pretome.nick'] = request.form['pretome_nick']
+            cfg['pretome.nick_pass'] = request.form['pretome_nickpassword']
+            cfg['pretome.delay'] = request.form['pretome_delay']
+            logger.debug("saved pretome settings")
+
         if 'iptorrents_torrentpass' in request.form:
             cfg['iptorrents.torrent_pass'] = request.form['iptorrents_torrentpass']
             cfg['iptorrents.nick'] = request.form['iptorrents_nick']
@@ -257,7 +264,7 @@ def notify(pvr_name):
             announcement = db.Announced.get(id=data.get('id'))
             if announcement is not None and len(announcement.title) > 0:
                 logger.debug("Checking announcement again: %s", announcement.title)
-                
+
                 if pvr_name == "Sonarr":
                     approved = sonarr.wanted(announcement.title, announcement.torrent, announcement.indexer)
                 elif pvr_name == "Radarr":

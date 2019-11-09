@@ -36,7 +36,11 @@ def substr(data, first, last, strip):
     val = None
     try:
         if strip:
-            val = data[data.find(first) + len(first):data.find(last)]
+            lasti = data.find(last)
+            # if last is not present in the string, return from first to the end of data
+            if lasti == -1:
+                lasti = len(data)
+            val = data[data.find(first) + len(first):lasti]
         else:
             val = data[data.find(first):data.find(last) + len(last)]
 
@@ -179,6 +183,6 @@ def download_torrent(tracker, torrent_id, cookies, url):
         return torrent_path
 
     except Exception as ex:
-        logger.exception("Exception while download_torrent: %s to %s", url, torrent_path)
+        logger.exception("Exception %s while download_torrent: %s to %s", ex, url, torrent_path)
 
     return None
