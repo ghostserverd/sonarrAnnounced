@@ -24,9 +24,9 @@ def run():
     
     while len(trackers.loaded) <= 0:
         logger.info("No trackers were initialized, waiting...")
+        sleep(5)
         trackers.source.cleanup()
         trackers = Trackers()
-        sleep(5)
 
     thread_irc = irc_task(trackers)
     thread_irc.fire('START')
