@@ -18,15 +18,18 @@ def run():
     global thread_irc, thread_webui, trackers
 
     trackers = Trackers()
-    if len(trackers.loaded) <= 0:
-        logger.info("No trackers were initialized, exiting...")
-        quit()
+
+    thread_webui = webui_task(trackers)
+    thread_webui.fire('START')
+    
+    while len(trackers.loaded) <= 0:
+        logger.info("No trackers were initialized, waiting...")
+        trackers.source.cleanup()
+        trackers = Trackers()
+        sleep(5)
 
     thread_irc = irc_task(trackers)
-    thread_webui = webui_task(trackers)
-
     thread_irc.fire('START')
-    thread_webui.fire('START')
 
     thread_irc.wait_thread(thread_irc)
     thread_webui.wait_thread(thread_webui)
