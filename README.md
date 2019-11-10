@@ -17,10 +17,12 @@ Python script to notify sonarr or radarr of tracker announcements from IRC annou
 8. TorrentLeech
 9. Alpharatio
 10. RevolutionTT
+11. ~~PreToMe~~
 
 Open to suggestions/pull requests!
 
 ## To-Do
+- Dynamically load tracker-level configuration on announce / parse
 - changes to the web frontend to edit the new trackers etc.
 - add Radarr support to more trackers
 
