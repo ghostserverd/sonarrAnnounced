@@ -43,7 +43,7 @@ def parse(announcement):
         return
 
     # extract required information from announcement
-    torrent_title = utils.replace_periods(utils.replace_spaces(utils.substr(decolored, 'New Torrent: ', ' Category:', True), '-'), '').lower()
+    torrent_title = utils.substr(decolored, 'New Torrent: ', ' Category:', True)
     torrent_id = utils.get_id(decolored, 0)
 
     if 'Category: TV' in decolored:
@@ -55,7 +55,8 @@ def parse(announcement):
 
 def notify_pvr(torrent_id, torrent_title, auth_key, torrent_pass, name, pvr_name):
     if torrent_id is not None and torrent_title is not None:
-        download_link = get_torrent_link(torrent_id, torrent_title)
+        torrent_link_title = utils.replace_periods(utils.replace_spaces(torrent_title, '-'), '').lower()
+        download_link = get_torrent_link(torrent_id, torrent_link_title)
 
         announced = db.Announced(date=datetime.datetime.now(), title=torrent_title,
                                  indexer=name, torrent=download_link, pvr=pvr_name)
