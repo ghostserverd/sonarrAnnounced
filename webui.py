@@ -107,6 +107,13 @@ def trackers():
             cfg['pretome.delay'] = request.form['pretome_delay']
             logger.debug("saved pretome settings")
 
+        if 'beyondhd_torrentpass' in request.form:
+            cfg['beyondhd.torrent_pass'] = request.form['beyondhd_torrentpass']
+            cfg['beyondhd.nick'] = request.form['beyondhd_nick']
+            cfg['beyondhd.nick_pass'] = request.form['beyondhd_nickpassword']
+            cfg['beyondhd.delay'] = request.form['beyondhd_delay']
+            logger.debug("saved beyondhd settings")
+
         if 'iptorrents_torrentpass' in request.form:
             cfg['iptorrents.torrent_pass'] = request.form['iptorrents_torrentpass']
             cfg['iptorrents.nick'] = request.form['iptorrents_nick']

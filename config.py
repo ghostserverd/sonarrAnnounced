@@ -29,6 +29,13 @@ def init():
     cfg.init('pretome.invite_key', '')
     cfg.init('pretome.delay', 0)
 
+    cfg.init('beyondhd.nick', '')
+    cfg.init('beyondhd.nick_pass', '')
+    cfg.init('beyondhd.auth_key', '')
+    cfg.init('beyondhd.torrent_pass', '')
+    cfg.init('beyondhd.invite_key', '')
+    cfg.init('beyondhd.delay', 0)
+
     cfg.init('iptorrents.nick', '')
     cfg.init('iptorrents.nick_pass', '')
     cfg.init('iptorrents.auth_key', '')

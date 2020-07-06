@@ -22,6 +22,12 @@ nick_pass =
 torrent_pass =
 delay = 0
 
+[beyondhd]
+nick =
+nick_pass =
+torrent_pass =
+delay = 0
+
 [iptorrents]
 nick =
 nick_pass =
