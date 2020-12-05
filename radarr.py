@@ -31,7 +31,7 @@ def wanted(title, download_link, indexer):
     logger.debug(params)
     logger.debug(requestUrl)
 
-    resp = requests.post(url=requestUrl, headers=headers, params=params)
+    resp = requests.post(url=requestUrl, headers=headers, data=params, params=params)
     logger.debug(resp)
     respJson = resp.json()
     logger.debug(respJson)
