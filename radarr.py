@@ -32,9 +32,11 @@ def wanted(title, download_link, indexer):
     logger.debug(requestUrl)
 
     resp = requests.post(url=requestUrl, headers=headers, data=params, params=params)
-    logger.debug(resp)
     respJson = resp.json()
+    logger.debug(resp)
     logger.debug(respJson)
+    logger.debug(resp.request.body)
+    logger.debug(resp.request.headers)
 
     if 'approved' in resp:
         approved = resp['approved']
