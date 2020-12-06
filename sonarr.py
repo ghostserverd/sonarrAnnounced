@@ -25,16 +25,18 @@ def wanted(title, download_link, indexer):
         'publishDate': datetime.datetime.now().isoformat(),
         'indexer': indexer
     }
-    requestUrl = "{}/api/release/push".format(cfg['sonarr.url'])
+    requestUrl = f"{cfg['sonarr.url']}/api/release/push"
 
-    logger.debug(headers)
-    logger.debug(params)
-    logger.debug(requestUrl)
+    logger.debug(f"REQ_HEADERS: {headers}")
+    logger.debug(f"REQ_PARAMS:  {params}")
+    logger.debug(f"REQ_URL:     {requestUrl}")
 
-    resp = requests.post(url=requestUrl, headers=headers, params=params)
-    logger.debug(resp)
-    respJson = resp.json()
-    logger.debug(respJson)
+    resp = requests.post(url=requestUrl, headers=headers, json=params)
+
+    logger.debug(f"REQ_BODY:    {resp.request.body}")
+    logger.debug(f"REQ_HEADERS: {resp.request.headers}")
+    logger.debug(f"RESP:        {resp}")
+    logger.debug(f"RESP_JSON:   {resp.json()}")
 
     if 'approved' in resp:
         approved = resp['approved']
