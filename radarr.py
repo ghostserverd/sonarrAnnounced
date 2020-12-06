@@ -25,18 +25,18 @@ def wanted(title, download_link, indexer):
         'publishDate': datetime.datetime.now().isoformat(),
         'indexer': indexer
     }
-    requestUrl = "{}/api/release/push".format(cfg['radarr.url'])
+    requestUrl = f"{cfg['radarr.url']}/api/release/push"
 
-    logger.debug(headers)
-    logger.debug(params)
-    logger.debug(requestUrl)
+    logger.debug(f"REQ_HEADERS: {headers}")
+    logger.debug(f"REQ_PARAMS:  {params}")
+    logger.debug(f"REQ_URL:     {requestUrl}")
 
-    resp = requests.post(url=requestUrl, headers=headers, data=params, params=params)
-    respJson = resp.json()
-    logger.debug(resp)
-    logger.debug(respJson)
-    logger.debug(resp.request.body)
-    logger.debug(resp.request.headers)
+    resp = requests.post(url=requestUrl, headers=headers, json=params)
+
+    logger.debug(f"REQ_BODY:    {resp.request.body}")
+    logger.debug(f"REQ_HEADERS: {resp.request.headers}")
+    logger.debug(f"RESP:        {resp}")
+    logger.debug(f"RESP_JSON:   {resp.json()}")
 
     if 'approved' in resp:
         approved = resp['approved']
